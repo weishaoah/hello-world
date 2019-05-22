@@ -1,1 +1,10 @@
-
+1. openSMILE在windows下使用时，需要使用vs10（或者更高的版本）进行编译，生成可用的SMILExtract可执行文件，便于后续的执行。
+    编译过程中的错误：（1） LNK2001 error, componentManager.obj：error LNK2001：外部的“”protected：virtual void __thiscall cSimpleMessageSender :
+    : fetchConfig（void）“（？fetchConfig @ cSimpleMessageSender @@ MAEXXZ）”是未解决的
+    解决办法：将src \ examples \ simpleMessageSender.cpp添加到openSmileLib项目中再重新编译就可以了。
+    
+    （2）MSVCRTD.lib(crtexew.obj) : error LNK2019: 无法解析的外部符号 _WinMain@16，该符号在函数 ___tmainCRTStartup 中被引用
+    解决办法：项目——> 项目属性——> 配置属性——> 链接器——> 系统——> 子系统
+    这里选择控制台(SUBSYSTEM:CONSOLE) 则表示此项目是WIN32控制台程序。
+    而选择Windows (/SUBSYSTEM:WINDOWS) 则表示为 WIN32项目。
+    
